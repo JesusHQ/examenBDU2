@@ -1,3 +1,7 @@
+let ip=document.getElementById('ip');
+let pais=document.getElementById('pais');
+
+
 // Función para obtener la ubicación y registrar datos enviando la solicitud POST
 function registrarDatos() {
   // Hacer una petición para obtener la ubicación
@@ -6,7 +10,7 @@ function registrarDatos() {
     .then(function (response) {
       // manejar respuesta exitosa
       console.log(response.data.pais);
-
+      pais.innerHTML = response.data.pais;
       // Obtener los valores del formulario
       let nombre = document.getElementById('nombre').value;
       let edad = document.getElementById('edad').value;
