@@ -23,7 +23,7 @@ function registrarDatos(ubicacion) {
         console.log(error);
       });
   } else if (ubicacion === 'Francia') {
-    axios.post('https://tu-api-francia.com/tu-ruta', datos)
+    axios.post('https://servjhq.000webhostapp.com/api-francia/index.php', datos)
       .then(function (response) {
         // Manejar respuesta exitosa
         console.log(response.data);
