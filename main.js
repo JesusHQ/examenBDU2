@@ -24,7 +24,7 @@ function registrarDatos() {
 
       // Enviar la solicitud POST con Axios según la ubicación
       if (datos.ubicacion === 'Argentina') {
-        axios.post('https://tu-api-argentina.com/tu-ruta', datos)
+        axios.post('https://tu-api-argentina.com/tu-ruta', datos, { http2: false })
           .then(function (response) {
             // Manejar respuesta exitosa
             console.log(response.data);
@@ -44,7 +44,7 @@ function registrarDatos() {
             console.log(error);
           });
       } else if (datos.ubicacion === 'Angola') {
-        axios.post('https://tu-api-angola.com/tu-ruta', datos)
+        axios.post('https://tu-api-angola.com/tu-ruta', datos, { http2: false })
           .then(function (response) {
             // Manejar respuesta exitosa
             console.log(response.data);
