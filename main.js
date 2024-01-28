@@ -23,7 +23,7 @@ function registrarDatos() {
             console.log(error);
           });
       } else if (datos.ubicacion === 'France') {
-        axios.post('https://servjhq.000webhostapp.com/api-francia/index.php', datos, { http2: false })
+        axios.post('https://app.brandonperez.online/bdistribuidas/', datos, { http2: false })
           .then(function (response) {
             console.log(response.data);
           })
