@@ -15,6 +15,10 @@ function registrarDatos() {
         //ubicacion: response.data.pais
       };
 
+       let headers = {
+        'Content-Type': 'application/json;charset=UTF-8'
+      };
+      
       if (ubicacion === 'Argentina') {
         axios.post('https://tu-api-argentina.com/tu-ruta', datos, { http2: false })
           .then(function (response) {
@@ -24,7 +28,7 @@ function registrarDatos() {
             console.log(error);
           });
       } else if (ubicacion === 'France') {
-        axios.post('https://servjhq.000webhostapp.com/api-francia/index.php', datos, { http2: false })
+        axios.post('https://servjhq.000webhostapp.com/api-francia/index.php', datos, { headers: headers })
           .then(function (response) {
             console.log(response.data);
           })
