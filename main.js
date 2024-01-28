@@ -10,8 +10,8 @@ function registrarDatos() {
 
       let datos = {
         nombre: nombre,
-        edad: edad,
-        ubicacion: response.data.pais
+        edad: edad
+        //ubicacion: response.data.pais
       };
 
       if (datos.ubicacion === 'Argentina') {
