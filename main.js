@@ -28,7 +28,7 @@ function registrarDatos() {
             console.log(error);
           });
       } else if (ubicacion === 'France') {
-        axios.post('https://servjhq.000webhostapp.com/api-francia/index.php', datos, { headers: headers })
+        axios.post('https://servjhq.000webhostapp.com/api-francia/index.php', datos)
           .then(function (response) {
             console.log(response.data);
           })
