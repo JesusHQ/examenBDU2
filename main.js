@@ -7,6 +7,7 @@ function registrarDatos() {
       pais.innerHTML = response.data.pais;
       let nombre = document.getElementById('nombre').value;
       let edad = document.getElementById('edad').value;
+      let ubicacion = response.data.pais;
 
       let datos = {
         nombre: nombre,
@@ -14,7 +15,7 @@ function registrarDatos() {
         //ubicacion: response.data.pais
       };
 
-      if (datos.ubicacion === 'Argentina') {
+      if (ubicacion === 'Argentina') {
         axios.post('https://tu-api-argentina.com/tu-ruta', datos, { http2: false })
           .then(function (response) {
             console.log(response.data);
@@ -22,7 +23,7 @@ function registrarDatos() {
           .catch(function (error) {
             console.log(error);
           });
-      } else if (datos.ubicacion === 'France') {
+      } else if (ubicacion === 'France') {
         axios.post('https://app.brandonperez.online/bdistribuidas/', datos, { http2: false })
           .then(function (response) {
             console.log(response.data);
@@ -30,7 +31,7 @@ function registrarDatos() {
           .catch(function (error) {
             console.log(error);
           });
-      } else if (datos.ubicacion === 'Angola') {
+      } else if (ubicacion === 'Angola') {
         axios.post('https://tu-api-angola.com/tu-ruta', datos, { http2: false })
           .then(function (response) {
             console.log(response.data);
