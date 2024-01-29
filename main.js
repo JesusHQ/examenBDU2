@@ -1,55 +1,74 @@
+let ip = document.getElementById('ip');
 let pais = document.getElementById('pais');
 
+// Función para obtener la ubicación y registrar datos enviando la solicitud POST
 function registrarDatos() {
+  // Hacer una petición para obtener la ubicación
   axios
-    .get('https://proyjhq.000webhostapp.com/php-geoip-api/index2.php')
+    .get('https://proyjhq.000webhostapp.com/php-geoip-api/index.php')
     .then(function (response) {
+      // manejar respuesta exitosa
+      console.log(response.data.pais);
+      
       pais.innerHTML = response.data.pais;
+      let ubicacion = response.data.pais;
+      // Obtener los valores del formulario
       let nombre = document.getElementById('nombre').value;
       let edad = document.getElementById('edad').value;
-      let ubicacion = response.data.pais;
 
-      let datos = {
-        nombre: nombre,
-        edad: edad
-        //ubicacion: response.data.pais
-      };
+      // Configurar los encabezados para la solicitud POST
+    //  let headers = {
+    //    'Accept': '*/*',
+    //    'Content-Type': 'application/json;charset=UTF-8'
+    //  };
 
-       let headers = {
-        'Content-Type': 'application/json;charset=UTF-8'
-      };
-      
+      // Enviar la solicitud según la ubicación
       if (ubicacion === 'Argentina') {
-        axios.post('https://tu-api-argentina.com/tu-ruta', datos, { http2: false })
+        axios.get("https://servarg.000webhostapp.com/api-argentina/index.php?nombre="+ nombre + "&edad=" + edad + "&ubicacion=" + ubicacion)
           .then(function (response) {
+            // Manejar respuesta exitosa
             console.log(response.data);
           })
           .catch(function (error) {
+            // Manejar error
             console.log(error);
           });
-      } else if (ubicacion === 'France') {
-        axios.post('https://servjhq.000webhostapp.com/api-francia/index.php', datos)
+      }
+      else if (ubicacion === 'France')
+      {
+        axios.get("https://servjhq.000webhostapp.com/api-francia/index.php?nombre="+ nombre + "&edad=" + edad + "&ubicacion=" + ubicacion)
+        .then(function (response){
+          // Manejar respuesta exitosa
+          console.log(response);
+        })
+        .catch(function (error) {
+          // Manejar error
+          console.log(error);
+        });
+        
+      } else if (ubicacion === 'Japan') {
+        axios.get("https://servjap.000webhostapp.com/api-japon/index.php?nombre="+ nombre + "&edad=" + edad + "&ubicacion=" + ubicacion)
           .then(function (response) {
+            // Manejar respuesta exitosa
             console.log(response.data);
           })
           .catch(function (error) {
-            console.log(error);
-          });
-      } else if (ubicacion === 'Angola') {
-        axios.post('https://tu-api-angola.com/tu-ruta', datos, { http2: false })
-          .then(function (response) {
-            console.log(response.data);
-          })
-          .catch(function (error) {
+            // Manejar error
             console.log(error);
           });
       } else {
+        // Manejar otras ubicaciones si es necesario
         console.log('Ubicación no reconocida');
       }
     })
     .catch(function (error) {
+      // manejar error al obtener la ubicación
       console.log(error);
+    })
+    .finally(function () {
+      // siempre será ejecutado
     });
 }
 
+// Llama a la función registrarDatos cuando se carga la página
 window.addEventListener('load', registrarDatos);
